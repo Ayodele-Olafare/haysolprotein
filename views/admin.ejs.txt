@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+  </header>
+
+  <main>
+    <h2>All Orders</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer Name</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Status</th>
+          <th>Update Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% orders.forEach(function(order) { %>
+          <tr>
+            <td><%= order._id %></td>
+            <td><%= order.customerName %></td>
+            <td><%= order.product %></td>
+            <td><%= order.quantity %></td>
+            <td><%= order.status %></td>
+            <td>
+              <form action="/admin/update/<%= order._id %>" method="POST">
+                <select name="status">
+                  <option value="Pending" <%= order.status === 'Pending' ? 'selected' : '' %>>Pending</option>
+                  <option value="Shipped" <%= order.status === 'Shipped' ? 'selected' : '' %>>Shipped</option>
+                  <option value="Delivered" <%= order.status === 'Delivered' ? 'selected' : '' %>>Delivered</option>
+                  <option value="Cancelled" <%= order.status === 'Cancelled' ? 'selected' : '' %>>Cancelled</option>
+                </select>
+                <button type="submit">Update</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Haysol Protein</p>
+  </footer>
+</body>
+</html>

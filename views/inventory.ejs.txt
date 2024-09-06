@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Manage Inventory</h1>
+  </header>
+
+  <main>
+    <h2>Product Stock Levels</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Current Stock</th>
+          <th>Update Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% products.forEach(function(product) { %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.stock %></td>
+            <td>
+              <form action="/inventory/update" method="POST">
+                <input type="hidden" name="productId" value="<%= product._id %>">
+                <input type="number" name="newStock" value="<%= product.stock %>">
+                <button type="submit">Update</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Haysol Protein</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haysol Protein</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome to Haysol Protein</h1>
+  </header>
+
+  <main>
+    <h2>Our Products</h2>
+    <div class="product-list">
+      <% products.forEach(function(product) { %>
+        <div class="product">
+          <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+          <h3><%= product.name %></h3>
+          <p>Price: $<%= product.price %></p>
+          <p>Stock: <%= product.stock > 0 ? product.stock : 'Out of Stock' %></p>
+          <% if (product.stock > 0) { %>
+            <form action="/order" method="POST">
+              <input type="hidden" name="productId" value="<%= product._id %>">
+              <label>Name: <input type="text" name="name"></label><br>
+              <label>Address: <input type="text" name="address"></label><br>
+              <button type="submit">Order Now</button>
+            </form>
+          <% } else { %>
+            <button disabled>Out of Stock</button>
+          <% } %>
+        </div>
+      <% }); %>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Haysol Protein</p>
+  </footer>
+</body>
+</html>

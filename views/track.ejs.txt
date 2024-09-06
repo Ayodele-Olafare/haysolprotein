@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Tracking</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Order Tracking</h1>
+  </header>
+
+  <main>
+    <h2>Order Details</h2>
+    <p>Customer Name: <%= order.customerName %></p>
+    <p>Address: <%= order.address %></p>
+    <p>Product: <%= order.product %></p>
+    <p>Quantity: <%= order.quantity %></p>
+    <p>Status: <%= order.status %></p>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Haysol Protein</p>
+  </footer>
+</body>
+</html>
