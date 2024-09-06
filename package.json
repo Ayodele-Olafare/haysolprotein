@@ -1,0 +1,15 @@
+{
+  "name": "haysol-protein",
+  "version": "1.0.0",
+  "description": "Online store for selling dry fish, pomo, crayfish, and goat meat.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "ejs": "^3.1.6",
+    "mongoose": "^5.12.3",
+    "dotenv": "^10.0.0"
+  }
+}
